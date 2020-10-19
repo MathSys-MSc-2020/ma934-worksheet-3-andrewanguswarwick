@@ -1,7 +1,7 @@
 module StructuralRecursion
 
 export KeyValuePair, LinkedList, prepend, append, buildlist, FenwickTree, buildFTree
-export selectiveprint, search
+export selectiveprint, search, intervalmembership
 
 
 # Define a simple composite datatype to hold an (Int64, Float64) key-value pair

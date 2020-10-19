@@ -52,7 +52,7 @@ function search(list::Union{LinkedList, Nothing}, k::Int64)
         # Base case: Return from function
         return Nothing
     else
-        # Recursive case: Check if value greater than v and print
+        # Recursive case: Check if key matches input
         if list.data.key == k
           return list.data
         else
@@ -60,4 +60,19 @@ function search(list::Union{LinkedList, Nothing}, k::Int64)
         end
     end
 
+end
+
+# Returns interval which random variable lies in
+function intervalmembership(L::Union{LinkedList, Nothing}, x::Float64)
+    if(L == Nothing())
+        # Base case: Return from function
+        return Nothing
+    else
+        # Recursive case: Check if float in interval
+        if x < L.data.value
+          return L.data
+        else
+          intervalmembership(L.next,x)
+        end
+    end
 end
