@@ -82,9 +82,7 @@ function kv_array(n::Int64,rng::Any)
 end
 
 # Creates a partial sum array and key value pair array of size n
-function partial_sum_kv(n::Int64,rng::Any)
-  n = 5
-  y = rand(rng,n)
+function partial_sum_kv(n::Int64,y::Array{Float64,1})
   x = zeros(n)
   kv = Array{KeyValuePair, 1}(undef, n)
   for i in 1:n
