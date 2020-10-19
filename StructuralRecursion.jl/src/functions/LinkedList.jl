@@ -31,3 +31,33 @@ function buildlist(dataArray::Array{KeyValuePair, 1})
     end
     return L
 end
+
+# Print all values greater than v in linked list
+function selectiveprint( L::Union{LinkedList, Nothing}, v::Float64 )
+    if(L == Nothing())
+        # Base case: Return from function
+        return
+    else
+        # Recursive case: Check if value greater than v and print
+        if L.data.value > v
+          println(L.data)
+        end
+        selectiveprint(L.next,v)
+    end
+end
+
+# Search linked list for key
+function search(list::Union{LinkedList, Nothing}, k::Int64)
+    if(list == Nothing())
+        # Base case: Return from function
+        return Nothing
+    else
+        # Recursive case: Check if value greater than v and print
+        if list.data.key == k
+          return list.data
+        else
+          search(list.next,k)
+        end
+    end
+
+end
