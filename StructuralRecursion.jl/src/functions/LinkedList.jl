@@ -1,9 +1,3 @@
-# Define list type
-#mutable struct LinkedList
-#    data::KeyValuePair
-#    next::Union{LinkedList,Nothing}
-#end
-
 # Prepend data to list
 function prepend(list::Union{LinkedList,Nothing}, data::KeyValuePair) 
     new = LinkedList(data, Nothing())
@@ -75,4 +69,31 @@ function intervalmembership(L::Union{LinkedList, Nothing}, x::Float64)
           intervalmembership(L.next,x)
         end
     end
+end
+
+# Creates array of random number key value pairs
+function kv_array(n::Int64,rng::Any)
+  y = rand(rng, n)
+  kv = Array{KeyValuePair, 1}(undef, n)
+  for i in 1:n
+      kv[i] = KeyValuePair(i,y[i])
+  end
+  return y, kv
+end
+
+# Creates a partial sum array and key value pair array of size n
+function partial_sum_kv(n::Int64,rng::Any)
+  n = 5
+  y = rand(rng,n)
+  x = zeros(n)
+  kv = Array{KeyValuePair, 1}(undef, n)
+  for i in 1:n
+    if i > 1
+      x[i] = y[i] + x[i-1]
+    else
+      x[i] = y[i]
+    end
+    kv[i] = KeyValuePair(i,x[i])
+  end
+  return x, kv
 end

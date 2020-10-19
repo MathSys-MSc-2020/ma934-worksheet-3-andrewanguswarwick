@@ -22,4 +22,16 @@ function buildFTree(dataArray::Array{KeyValuePair, 1})
     end
 end
 
-        
+# Function to determine interval membership doing Fenwick tree
+function intervalmembership(T::Union{FenwickTree, Nothing}, x::Float64)
+  if T.data.key == -1
+    lsum = T.left.data.value
+    if x < lsum
+      intervalmembership(T.left,x)
+    else
+      intervalmembership(T.right,x-lsum)
+    end
+  else
+    return T.data
+  end
+end
