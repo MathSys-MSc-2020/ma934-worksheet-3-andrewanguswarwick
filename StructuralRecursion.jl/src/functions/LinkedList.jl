@@ -72,13 +72,12 @@ function intervalmembership(L::Union{LinkedList, Nothing}, x::Float64)
 end
 
 # Creates array of random number key value pairs
-function kv_array(n::Int64,rng::Any)
-  y = rand(rng, n)
+function kv_array(n::Int64,y::Array{Float64,1})
   kv = Array{KeyValuePair, 1}(undef, n)
   for i in 1:n
       kv[i] = KeyValuePair(i,y[i])
   end
-  return y, kv
+  return kv
 end
 
 # Creates a partial sum array and key value pair array of size n
